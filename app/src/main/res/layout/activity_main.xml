@@ -4,15 +4,102 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".main.MainActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="@string/al_quran"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/cardView2" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        style="@style/CardMenu"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical">
+
+        <LinearLayout
+            style="@style/CenterLayout"
+            android:background="@drawable/bg_read"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/CardItem"
+                android:text="@string/read_quran"
+                app:drawableTopCompat="@drawable/ic_quran" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        style="@style/CardMenu"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical">
+
+        <LinearLayout
+            style="@style/CenterLayout"
+            android:background="@drawable/bg_search"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/CardItem"
+                android:text="@string/search_surah"
+                app:drawableTopCompat="@drawable/ic_search" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        style="@style/CardMenu"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal">
+
+        <LinearLayout
+            style="@style/CenterLayout"
+            android:background="@drawable/bg_favorite"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/CardItem"
+                android:text="@string/favorite"
+                app:drawableTopCompat="@drawable/ic_favorite" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        style="@style/CardMenu"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal">
+
+        <LinearLayout
+            style="@style/CenterLayout"
+            android:background="@drawable/bg_settings"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/CardItem"
+                android:text="@string/settings"
+                app:drawableTopCompat="@drawable/ic_settings" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

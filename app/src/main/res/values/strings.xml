@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Al Quran</string>
+    <string name="read_quran">Baca Al Quran</string>
+    <string name="search_surah">Cari Surat</string>
+    <string name="favorite">Favorit</string>
+    <string name="settings">Pengaturan</string>
+    <string name="al_quran">Love Al Qur\'an</string>
 </resources>
