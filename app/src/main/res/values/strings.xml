@@ -5,4 +5,12 @@
     <string name="favorite">Favorit</string>
     <string name="settings">Pengaturan</string>
     <string name="al_quran">Love Al Qur\'an</string>
+    <string name="surah_list">Daftar Surat</string>
+    <string name="dummy_surah_name">Al-Fatihah</string>
+    <string name="dummy_surah_mean">Hari Dinampakkan Kesalahan-kesalahan</string>
+    <string name="dummy_surah_number">1</string>
+    <string name="dummy_surah_type">Madinah</string>
+    <string name="dummy_surah_verse">237 ayat</string>
+    <string name="bullet">•</string>
+    <string name="dummy_surah_asma">الفاتحة</string>
 </resources>
