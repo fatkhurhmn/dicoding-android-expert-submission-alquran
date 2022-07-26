@@ -4,7 +4,7 @@
     <string name="dummy_surah_mean">Hari Dinampakkan Kesalahan-kesalahan</string>
     <string name="dummy_surah_number">1</string>
     <string name="dummy_surah_type">Madinah</string>
-    <string name="dummy_surah_verse">237 ayat</string>
+    <string name="dummy_surah_verse">%s Ayat</string>
     <string name="bullet">•</string>
     <string name="dummy_surah_asma">الفاتحة</string>
 </resources>

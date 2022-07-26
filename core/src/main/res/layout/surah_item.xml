@@ -16,7 +16,7 @@
 
     <TextView
         android:id="@+id/tv_surah_item_number"
-        style="@style/Text.Title.Small"
+        style="@style/Text.Content.Medium"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:background="@drawable/bg_circle"
