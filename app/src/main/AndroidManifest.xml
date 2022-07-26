@@ -15,7 +15,7 @@
         android:theme="@style/Theme.AlQuran"
         tools:targetApi="31">
         <activity
-            android:name=".surahlist.SurahListActivity"
+            android:name=".listsurah.ListSurahActivity"
             android:exported="false" />
         <activity
             android:name=".main.MainActivity"
