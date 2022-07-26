@@ -28,7 +28,7 @@ class SurahRepository @Inject constructor(
             }
 
             override fun shouldFetch(data: List<Surah>?): Boolean =
-                data == null || data.isNotEmpty()
+                data == null || data.isEmpty()
 
             override suspend fun createCall(): Flow<ApiResponse<List<SurahResponse>>> =
                 remoteDataSource.getListSurah()
@@ -45,7 +45,7 @@ class SurahRepository @Inject constructor(
         }
     }
 
-    override fun setSurahFavorite(surah: Surah, state: Boolean) {
+    override fun setFavoriteSurah(surah: Surah, state: Boolean) {
         val surahEntity = DataMapper.mapDomainToEntity(surah)
         appExecutors.diskIO().execute { localDataSource.setFavoriteSurah(surahEntity, state) }
     }

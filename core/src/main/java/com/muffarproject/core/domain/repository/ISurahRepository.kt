@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 interface ISurahRepository {
     fun getAllSurah(): Flow<Resource<List<Surah>>>
     fun getFavoriteSurah(): Flow<List<Surah>>
-    fun setSurahFavorite(surah: Surah, state: Boolean)
+    fun setFavoriteSurah(surah: Surah, state: Boolean)
 }

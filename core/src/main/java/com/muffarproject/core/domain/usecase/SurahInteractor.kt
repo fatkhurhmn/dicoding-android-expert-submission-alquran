@@ -13,5 +13,5 @@ class SurahInteractor @Inject constructor(private val surahRepository: SurahRepo
     override fun getFavoriteSurah(): Flow<List<Surah>> = surahRepository.getFavoriteSurah()
 
     override fun setFavoriteSurah(surah: Surah, state: Boolean) =
-        surahRepository.setSurahFavorite(surah, state)
+        surahRepository.setFavoriteSurah(surah, state)
 }

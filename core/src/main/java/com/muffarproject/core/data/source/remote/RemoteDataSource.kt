@@ -18,6 +18,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
             try {
                 val response = apiService.getListSurah()
                 val surahs = response.surahs
+                Log.d(TAG, "getListSurah: $surahs")
                 if (surahs.isNotEmpty()) {
                     emit(ApiResponse.Success(surahs))
                 } else {
