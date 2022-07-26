@@ -17,5 +17,5 @@ interface SurahDao {
     suspend fun insertSurah(surah: List<SurahEntity>)
 
     @Update
-    fun updateFavoriteSurah(surah: SurahEntity, newState: Boolean)
+    fun updateFavoriteSurah(surah: SurahEntity)
 }
