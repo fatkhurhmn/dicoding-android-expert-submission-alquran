@@ -30,7 +30,7 @@
         android:id="@+id/tv_surah_item_name"
         style="@style/Text.Title.Small"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="2dp"
         android:text="@string/dummy_surah_name"
         app:layout_constraintBottom_toTopOf="@id/guideline"
         app:layout_constraintStart_toEndOf="@+id/tv_surah_item_number" />
@@ -38,7 +38,7 @@
     <TextView
         android:id="@+id/tv_surah_item_type"
         style="@style/Text.Content.Medium"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:text="@string/dummy_surah_type"
         app:layout_constraintStart_toEndOf="@+id/tv_surah_item_number"
         app:layout_constraintStart_toStartOf="@+id/tv_surah_item_name"

@@ -2,6 +2,7 @@ package com.muffarproject.alquran.listsurah
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -23,24 +24,26 @@ class ListSurahActivity : AppCompatActivity() {
         binding = ActivityListSurahBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        listSurahViewModel.surah.observe(this) {
-            Log.d(TAG, "onCreate: ${it.data}")
-        }
-
         setupData()
         setupRecyclerView()
+        binding.surahListToolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 
     private fun setupData() {
         listSurahViewModel.surah.observe(this) { surah ->
             when (surah) {
                 is Resource.Loading -> {
-                    Toast.makeText(this, "Loading..", Toast.LENGTH_SHORT).show()
+                    binding.loadingListSurah.visibility = View.VISIBLE
                 }
                 is Resource.Success -> {
+                    binding.loadingListSurah.visibility = View.GONE
                     surahAdapter.submitList(surah.data)
                 }
                 is Resource.Error -> {
+                    binding.loadingListSurah.visibility = View.GONE
+                    binding.tvErrorListSurah.visibility = View.VISIBLE
                     Toast.makeText(this, "Error:${surah.message}", Toast.LENGTH_SHORT).show()
                 }
             }

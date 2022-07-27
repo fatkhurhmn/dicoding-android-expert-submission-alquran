@@ -6,4 +6,5 @@
     <string name="settings">Pengaturan</string>
     <string name="al_quran">Love Al Qur\'an</string>
     <string name="surah_list">Daftar Surat</string>
+    <string name="empty_data">Data kosong</string>
 </resources>

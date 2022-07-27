@@ -51,4 +51,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_read_quran"
         tools:listitem="@layout/surah_item" />
+
+    <ProgressBar
+        android:id="@+id/loading_list_surah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/surah_list_toolbar" />
+
+    <TextView
+        android:id="@+id/tv_error_list_surah"
+        style="@style/Text.Content.Medium"
+        android:text="@string/empty_data"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/surah_list_toolbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
