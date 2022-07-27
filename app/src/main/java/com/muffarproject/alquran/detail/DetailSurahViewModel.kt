@@ -1,6 +1,8 @@
 package com.muffarproject.alquran.detail
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import com.muffarproject.core.data.Resource
 import com.muffarproject.core.domain.model.Verse
 import com.muffarproject.core.domain.usecase.SurahUseCase
@@ -10,13 +12,6 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailSurahViewModel @Inject constructor(private val surahUseCase: SurahUseCase) :
     ViewModel() {
-
-    private val mSurahNumber = MutableLiveData<String>()
-    val verse: LiveData<Resource<List<Verse>>> = Transformations.switchMap(mSurahNumber, ::getVerse)
-    private fun getVerse(surahNumber: String) =
+    fun getVerse(surahNumber: String): LiveData<Resource<List<Verse>>> =
         surahUseCase.getDetailSurah(surahNumber).asLiveData()
-
-    fun setSurahNumber(surahNumber: String) = apply {
-        mSurahNumber.value = surahNumber
-    }
 }

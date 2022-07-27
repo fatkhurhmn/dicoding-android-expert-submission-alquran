@@ -1,7 +1,6 @@
 package com.muffarproject.alquran.detail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -11,8 +10,8 @@ import com.muffarproject.alquran.databinding.ActivityDetailSurahBinding
 import com.muffarproject.alquran.listsurah.ListSurahActivity
 import com.muffarproject.core.data.Resource
 import com.muffarproject.core.domain.model.Surah
-import com.muffarproject.core.domain.model.Verse
 import com.muffarproject.core.ui.VerseAdapter
+import com.muffarproject.core.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,18 +26,33 @@ class DetailSurahActivity : AppCompatActivity() {
         binding = ActivityDetailSurahBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupData()
+        val surah = intent.getParcelableExtra<Surah>(ListSurahActivity.EXTRA_SURAH)
+        binding.verseListToolbar.title = surah?.name
+
+
+        setupListVerse(surah)
+        setupDetailSurah(surah)
         binding.verseListToolbar.setNavigationOnClickListener {
             onBackPressed()
         }
     }
 
-    private fun setupData() {
-        val surah = intent.getParcelableExtra<Surah>(ListSurahActivity.EXTRA_SURAH)
+    private fun setupDetailSurah(surah: Surah?) {
+        binding.apply {
+            if (surah != null) {
+                tvDetailSurahMeaning.text = surah.meaning
+                tvDetailType.text = surah.type.replaceFirstChar { it.uppercase() }
+                tvDetailNumberOfVerse.text = getString(
+                    R.string.dummy_surah_verse,
+                    surah.numberOfVerse.toString()
+                )
+            }
+        }
+    }
+
+    private fun setupListVerse(surah: Surah?) {
         if (surah != null) {
-            binding.verseListToolbar.title = surah.name
-            detailSurahViewModel.setSurahNumber(surah.surahNumber)
-            detailSurahViewModel.verse.observe(this) { verse ->
+            detailSurahViewModel.getVerse(surah.surahNumber).observe(this) { verse ->
                 when (verse) {
                     is Resource.Loading -> {
                         binding.loadingListVerse.visibility = View.VISIBLE
