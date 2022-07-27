@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".listsurah.ListSurahActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -16,41 +17,50 @@
         app:title="@string/surah_list"
         app:titleTextAppearance="@style/Text.Title.Medium" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_read_quran"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/surah_list_toolbar">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_read"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                style="@style/Text.Title.Big"
-                android:drawablePadding="16dp"
-                android:gravity="center"
-                android:text="@string/read_quran"
-                app:drawableEndCompat="@drawable/ic_quran" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_surah"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_read_quran"
-        tools:listitem="@layout/surah_item" />
+        app:layout_constraintTop_toBottomOf="@id/surah_list_toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_read_quran"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_read"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Text.Title.Big"
+                        android:drawablePadding="16dp"
+                        android:gravity="center"
+                        android:text="@string/read_quran"
+                        app:drawableEndCompat="@drawable/ic_quran" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_surah"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/surah_item" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <ProgressBar
         android:id="@+id/loading_list_surah"
