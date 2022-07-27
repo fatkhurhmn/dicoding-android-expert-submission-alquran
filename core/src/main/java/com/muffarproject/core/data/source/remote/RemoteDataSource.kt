@@ -4,6 +4,7 @@ import android.util.Log
 import com.muffarproject.core.data.source.remote.network.ApiResponse
 import com.muffarproject.core.data.source.remote.network.ApiService
 import com.muffarproject.core.data.source.remote.response.SurahResponse
+import com.muffarproject.core.data.source.remote.response.VerseResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -18,7 +19,6 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
             try {
                 val response = apiService.getListSurah()
                 val surahs = response.surahs
-                Log.d(TAG, "getListSurah: $surahs")
                 if (surahs.isNotEmpty()) {
                     emit(ApiResponse.Success(surahs))
                 } else {
@@ -27,6 +27,23 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
             } catch (e: Exception) {
                 emit(ApiResponse.Error(e.message.toString()))
                 Log.e(TAG, "getListSurah: ${e.message.toString()}")
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getDetailSurah(surahNumber: String): Flow<ApiResponse<List<VerseResponse>>> {
+        return flow {
+            try {
+                val response = apiService.getDetailSurah(surahNumber)
+                val verses = response.verses
+                if (verses.isNotEmpty()) {
+                    emit(ApiResponse.Success(verses))
+                } else {
+                    emit(ApiResponse.Empty)
+                }
+            } catch (e: Exception) {
+                emit(ApiResponse.Error(e.message.toString()))
+                Log.e(TAG, "getDetailSurah: ${e.message.toString()}")
             }
         }.flowOn(Dispatchers.IO)
     }

@@ -2,10 +2,12 @@ package com.muffarproject.core.utils
 
 import com.muffarproject.core.data.source.local.entity.SurahEntity
 import com.muffarproject.core.data.source.remote.response.SurahResponse
+import com.muffarproject.core.data.source.remote.response.VerseResponse
 import com.muffarproject.core.domain.model.Surah
+import com.muffarproject.core.domain.model.Verse
 
 object DataMapper {
-    fun mapResponsesToEntities(input: List<SurahResponse>): List<SurahEntity> {
+    fun mapSurahResponsesToSurahEntities(input: List<SurahResponse>): List<SurahEntity> {
         val surahList = ArrayList<SurahEntity>()
         input.map {
             val surahEntity = SurahEntity(
@@ -22,7 +24,7 @@ object DataMapper {
         return surahList
     }
 
-    fun mapEntitiesToDomain(input: List<SurahEntity>): List<Surah> {
+    fun mapSurahEntitiesToSurah(input: List<SurahEntity>): List<Surah> {
         val surahList = ArrayList<Surah>()
         input.map {
             val surahEntity = Surah(
@@ -39,7 +41,7 @@ object DataMapper {
         return surahList
     }
 
-    fun mapDomainToEntity(input: Surah) = SurahEntity(
+    fun mapSurahToSurahEntity(input: Surah) = SurahEntity(
         surahNumber = input.surahNumber,
         name = input.name,
         numberOfVerse = input.numberOfVerse,
@@ -47,5 +49,12 @@ object DataMapper {
         asma = input.asma,
         type = input.type,
         isFavorite = false
+    )
+
+    fun mapVerseResponseToVerse(input: VerseResponse) = Verse(
+        arabic = input.verse,
+        latin = input.latin,
+        meaning = input.translate,
+        number = input.number
     )
 }

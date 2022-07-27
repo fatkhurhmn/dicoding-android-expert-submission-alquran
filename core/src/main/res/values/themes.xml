@@ -14,6 +14,10 @@
         <item name="android:textSize">22sp</item>
     </style>
 
+    <style name="Text.Title.Medium">
+        <item name="android:textSize">20sp</item>
+    </style>
+
     <style name="Text.Title.Small">
         <item name="android:textSize">16sp</item>
     </style>
@@ -22,7 +26,15 @@
         <item name="android:fontFamily">@font/open_sans_medium</item>
     </style>
 
+    <style name="Text.Content.Big">
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="Text.Content.Medium">
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Text.Content.Small">
+        <item name="android:textSize">12sp</item>
     </style>
 </resources>

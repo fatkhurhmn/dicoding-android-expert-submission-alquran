@@ -9,7 +9,7 @@ import com.muffarproject.core.R
 import com.muffarproject.core.databinding.SurahItemBinding
 import com.muffarproject.core.domain.model.Surah
 
-class SurahAdapter(private val onVerseClick: (String) -> Unit) :
+class SurahAdapter(private val onVerseClick: (Surah) -> Unit) :
     ListAdapter<Surah, SurahAdapter.ListViewHolder>(DIFF_CALLBACK) {
 
     inner class ListViewHolder(private val binding: SurahItemBinding) :
@@ -25,7 +25,7 @@ class SurahAdapter(private val onVerseClick: (String) -> Unit) :
                 )
                 tvSurahItemAsma.text = surah.asma
                 binding.root.setOnClickListener {
-                    onVerseClick(surah.surahNumber)
+                    onVerseClick(surah)
                 }
             }
         }

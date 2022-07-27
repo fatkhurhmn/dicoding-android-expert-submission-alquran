@@ -4,6 +4,7 @@
     package="com.muffarproject.alquran">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".BaseApplication"
         android:allowBackup="true"
@@ -15,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AlQuran"
         tools:targetApi="31">
+        <activity
+            android:name=".detail.DetailSurahActivity"
+            android:exported="false" />
         <activity
             android:name=".listsurah.ListSurahActivity"
             android:exported="false" />

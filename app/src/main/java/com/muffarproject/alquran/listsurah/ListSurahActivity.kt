@@ -1,14 +1,16 @@
 package com.muffarproject.alquran.listsurah
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.muffarproject.alquran.databinding.ActivityListSurahBinding
+import com.muffarproject.alquran.detail.DetailSurahActivity
 import com.muffarproject.core.data.Resource
+import com.muffarproject.core.domain.model.Surah
 import com.muffarproject.core.ui.SurahAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,7 +27,6 @@ class ListSurahActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupData()
-        setupRecyclerView()
         binding.surahListToolbar.setNavigationOnClickListener {
             onBackPressed()
         }
@@ -40,10 +41,12 @@ class ListSurahActivity : AppCompatActivity() {
                 is Resource.Success -> {
                     binding.loadingListSurah.visibility = View.GONE
                     surahAdapter.submitList(surah.data)
+                    setupRecyclerView()
                 }
                 is Resource.Error -> {
                     binding.loadingListSurah.visibility = View.GONE
                     binding.tvErrorListSurah.visibility = View.VISIBLE
+                    binding.rvSurah.visibility = View.GONE
                     Toast.makeText(this, "Error:${surah.message}", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -59,11 +62,14 @@ class ListSurahActivity : AppCompatActivity() {
         }
     }
 
-    private fun detailSurah(surahNumber: String) {
-        Toast.makeText(this, surahNumber, Toast.LENGTH_SHORT).show()
+    private fun detailSurah(surah: Surah) {
+        val detailIntent = Intent(this, DetailSurahActivity::class.java)
+        detailIntent.putExtra(EXTRA_SURAH, surah)
+        startActivity(detailIntent)
     }
 
     companion object {
         const val TAG = "ListSurahActivity"
+        const val EXTRA_SURAH = "extra surah"
     }
 }
