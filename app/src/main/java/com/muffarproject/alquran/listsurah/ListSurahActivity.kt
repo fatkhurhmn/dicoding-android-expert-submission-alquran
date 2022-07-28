@@ -36,17 +36,26 @@ class ListSurahActivity : AppCompatActivity() {
         listSurahViewModel.surah.observe(this) { surah ->
             when (surah) {
                 is Resource.Loading -> {
-                    binding.loadingListSurah.visibility = View.VISIBLE
+                    with(binding) {
+                        loadingListSurah.visibility = View.VISIBLE
+                        rvSurah.visibility = View.GONE
+                    }
                 }
                 is Resource.Success -> {
-                    binding.loadingListSurah.visibility = View.GONE
+                    with(binding) {
+                        loadingListSurah.visibility = View.GONE
+                        loadingListSurah.visibility = View.GONE
+                        rvSurah.visibility = View.VISIBLE
+                    }
                     surahAdapter.submitList(surah.data)
                     setupRecyclerView()
                 }
                 is Resource.Error -> {
-                    binding.loadingListSurah.visibility = View.GONE
-                    binding.tvErrorListSurah.visibility = View.VISIBLE
-                    binding.rvSurah.visibility = View.GONE
+                    with(binding) {
+                        loadingListSurah.visibility = View.GONE
+                        tvErrorListSurah.visibility = View.VISIBLE
+                        rvSurah.visibility = View.GONE
+                    }
                     Toast.makeText(this, "Error:${surah.message}", Toast.LENGTH_SHORT).show()
                 }
             }

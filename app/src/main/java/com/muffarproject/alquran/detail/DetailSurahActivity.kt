@@ -40,6 +40,7 @@ class DetailSurahActivity : AppCompatActivity() {
     private fun setupDetailSurah(surah: Surah?) {
         binding.apply {
             if (surah != null) {
+                tvDetailSurahName.text = surah.name
                 tvDetailSurahMeaning.text = surah.meaning
                 tvDetailType.text = surah.type.replaceFirstChar { it.uppercase() }
                 tvDetailNumberOfVerse.text = getString(
@@ -55,17 +56,25 @@ class DetailSurahActivity : AppCompatActivity() {
             detailSurahViewModel.getVerse(surah.surahNumber).observe(this) { verse ->
                 when (verse) {
                     is Resource.Loading -> {
-                        binding.loadingListVerse.visibility = View.VISIBLE
+                        with(binding) {
+                            loadingListVerse.visibility = View.VISIBLE
+                            rvVerse.visibility = View.GONE
+                        }
                     }
                     is Resource.Success -> {
-                        binding.loadingListVerse.visibility = View.GONE
+                        with(binding) {
+                            loadingListVerse.visibility = View.GONE
+                            rvVerse.visibility = View.VISIBLE
+                        }
                         verseAdapter.submitList(verse.data)
                         setupRecyclerView()
                     }
                     is Resource.Error -> {
-                        binding.loadingListVerse.visibility = View.GONE
-                        binding.tvErrorListVerse.visibility = View.VISIBLE
-                        binding.rvVerse.visibility = View.GONE
+                        with(binding) {
+                            loadingListVerse.visibility = View.GONE
+                            tvErrorListVerse.visibility = View.VISIBLE
+                            rvVerse.visibility = View.GONE
+                        }
                         Toast.makeText(this, "Error:${verse.message}", Toast.LENGTH_SHORT).show()
                     }
                 }

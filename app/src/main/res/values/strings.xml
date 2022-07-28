@@ -6,6 +6,9 @@
     <string name="settings">Pengaturan</string>
     <string name="al_quran">Love Al Qur\'an</string>
     <string name="surah_list">Daftar Surat</string>
-    <string name="empty_data">Data kosong</string>
+    <string name="something_went_wrong">Terjadi kesalahan</string>
     <string name="alfatihah">Al Fatihah</string>
+    <string name="number_of_juz">30 Juz</string>
+    <string name="number_of_surah">114 Surat</string>
+    <string name="come_read_quran">Mari Membaca Al Quran</string>
 </resources>
