@@ -1,6 +1,5 @@
 package com.muffarproject.core.data
 
-import android.util.Log
 import com.muffarproject.core.data.source.local.LocalDataSource
 import com.muffarproject.core.data.source.remote.RemoteDataSource
 import com.muffarproject.core.data.source.remote.network.ApiResponse
@@ -10,7 +9,10 @@ import com.muffarproject.core.domain.model.Verse
 import com.muffarproject.core.domain.repository.ISurahRepository
 import com.muffarproject.core.utils.AppExecutors
 import com.muffarproject.core.utils.DataMapper
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
 

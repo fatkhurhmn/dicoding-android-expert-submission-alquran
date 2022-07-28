@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.muffarproject.alquran.R
 import com.muffarproject.alquran.search.SearchActivity
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             cvReadQuran.setOnClickListener(this@MainActivity)
             cvSearchSurah.setOnClickListener(this@MainActivity)
             cvFavorite.setOnClickListener(this@MainActivity)
+            cvSettings.setOnClickListener(this@MainActivity)
         }
     }
 
@@ -42,6 +44,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val uri = Uri.parse("alquran://favorite")
                 val favoriteIntent = Intent(Intent.ACTION_VIEW, uri)
                 startActivity(favoriteIntent)
+            }
+
+            R.id.cv_settings -> {
+                Toast.makeText(this, "Coming soon", Toast.LENGTH_SHORT).show()
             }
         }
     }

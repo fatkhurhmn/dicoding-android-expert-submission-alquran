@@ -7,6 +7,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class ListSurahViewModel @Inject constructor(private val surahUseCase: SurahUseCase) : ViewModel() {
+class ListSurahViewModel @Inject constructor(surahUseCase: SurahUseCase) : ViewModel() {
     val surah = surahUseCase.getAllSurah().asLiveData()
 }

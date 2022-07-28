@@ -3,7 +3,6 @@ package com.muffarproject.core.data.source.remote
 import android.util.Log
 import com.muffarproject.core.data.source.remote.network.ApiResponse
 import com.muffarproject.core.data.source.remote.network.ApiService
-import com.muffarproject.core.data.source.remote.response.ListSurahResponse
 import com.muffarproject.core.data.source.remote.response.SurahResponse
 import com.muffarproject.core.data.source.remote.response.VerseResponse
 import kotlinx.coroutines.Dispatchers
