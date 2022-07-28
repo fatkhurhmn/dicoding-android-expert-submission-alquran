@@ -40,6 +40,7 @@ class DetailSurahActivity : AppCompatActivity() {
     private fun setupDetailSurah(surah: Surah?) {
         binding.apply {
             if (surah != null) {
+                tvDetailSurahNumber.text = surah.surahNumber
                 tvDetailSurahName.text = surah.name
                 tvDetailSurahMeaning.text = surah.meaning
                 tvDetailType.text = surah.type.replaceFirstChar { it.uppercase() }

@@ -40,6 +40,7 @@
         style="@style/Text.Content.Medium"
         android:layout_marginTop="2dp"
         android:text="@string/dummy_surah_type"
+        android:textColor="@color/grey"
         app:layout_constraintStart_toEndOf="@+id/tv_surah_item_number"
         app:layout_constraintStart_toStartOf="@+id/tv_surah_item_name"
         app:layout_constraintTop_toBottomOf="@id/guideline" />
@@ -49,6 +50,7 @@
         style="@style/Text.Content.Medium"
         android:layout_marginStart="4dp"
         android:text="@string/bullet"
+        android:textColor="@color/grey"
         app:layout_constraintBottom_toBottomOf="@+id/tv_surah_item_verse"
         app:layout_constraintStart_toEndOf="@+id/tv_surah_item_type"
         app:layout_constraintTop_toTopOf="@+id/tv_surah_item_verse" />
@@ -58,6 +60,7 @@
         style="@style/Text.Content.Medium"
         android:layout_marginStart="4dp"
         android:text="@string/dummy_surah_verse"
+        android:textColor="@color/grey"
         app:layout_constraintStart_toEndOf="@+id/bullet_point"
         app:layout_constraintTop_toTopOf="@+id/tv_surah_item_type" />
 
