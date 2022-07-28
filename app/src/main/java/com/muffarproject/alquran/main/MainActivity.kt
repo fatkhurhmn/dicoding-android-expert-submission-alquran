@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.muffarproject.alquran.R
+import com.muffarproject.alquran.search.SearchActivity
 import com.muffarproject.alquran.databinding.ActivityMainBinding
 import com.muffarproject.alquran.listsurah.ListSurahActivity
 
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.apply {
             cvReadQuran.setOnClickListener(this@MainActivity)
+            cvSearchSurah.setOnClickListener(this@MainActivity)
         }
     }
 
@@ -27,6 +29,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.cv_read_quran -> {
                 val readQuranIntent = Intent(this, ListSurahActivity::class.java)
                 startActivity(readQuranIntent)
+            }
+
+            R.id.cv_search_surah -> {
+                val searchIntent = Intent(this, SearchActivity::class.java)
+                startActivity(searchIntent)
             }
         }
     }

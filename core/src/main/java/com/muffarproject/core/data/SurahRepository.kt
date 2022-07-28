@@ -1,5 +1,6 @@
 package com.muffarproject.core.data
 
+import android.util.Log
 import com.muffarproject.core.data.source.local.LocalDataSource
 import com.muffarproject.core.data.source.remote.RemoteDataSource
 import com.muffarproject.core.data.source.remote.network.ApiResponse
@@ -39,12 +40,6 @@ class SurahRepository @Inject constructor(
             }
         }.asFlow()
 
-    override fun getFavoriteSurah(): Flow<List<Surah>> {
-        return localDataSource.getFavoriteSurah().map {
-            DataMapper.mapSurahEntitiesToSurah(it)
-        }
-    }
-
     override fun getDetailSurah(surahNumber: String): Flow<Resource<List<Verse>>> {
         return flow {
             emit(Resource.Loading())
@@ -62,6 +57,32 @@ class SurahRepository @Inject constructor(
                     emit(Resource.Error(apiResponse.errorMessage))
                 }
             }
+        }
+    }
+
+    override fun getSurahByName(query: String): Flow<Resource<List<Surah>>> {
+        return flow {
+            emit(Resource.Loading())
+            when (val apiResponse = remoteDataSource.getSurahByName(query).first()) {
+                is ApiResponse.Success -> {
+                    val data = apiResponse.data.map {
+                        DataMapper.mapSurahResponseToSurah(it)
+                    }
+                    emit(Resource.Success(data))
+                }
+                is ApiResponse.Empty -> {
+                    emit(Resource.Success(listOf()))
+                }
+                is ApiResponse.Error -> {
+                    emit(Resource.Error(apiResponse.errorMessage))
+                }
+            }
+        }
+    }
+
+    override fun getFavoriteSurah(): Flow<List<Surah>> {
+        return localDataSource.getFavoriteSurah().map {
+            DataMapper.mapSurahEntitiesToSurah(it)
         }
     }
 

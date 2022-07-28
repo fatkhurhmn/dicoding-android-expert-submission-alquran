@@ -11,4 +11,7 @@
     <string name="number_of_juz">30 Juz</string>
     <string name="number_of_surah">114 Surat</string>
     <string name="come_read_quran">Mari Membaca Al Quran</string>
+    <string name="instruction">Masukkan kata kunci yang mendekati nama surat yang ingin dicari, contoh: ketik kata kunci \'Mu\', \'Rohman\'.</string>
+    <string name="keyword">Ketik kata kunci</string>
+    <string name="empty_search">Tidak ada surat yang sesuai</string>
 </resources>

@@ -2,7 +2,6 @@ package com.muffarproject.core.data.source.remote.network
 
 import com.muffarproject.core.data.source.remote.response.DetailSurahResponse
 import com.muffarproject.core.data.source.remote.response.ListSurahResponse
-import com.muffarproject.core.data.source.remote.response.SearchResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -15,8 +14,8 @@ interface ApiService {
         @Path("surah_number") surah_number: String
     ): DetailSurahResponse
 
-    @GET("surah/search/{surah_name")
+    @GET("surah/search/{surah_name}")
     suspend fun findSurah(
         @Path("surah_name") surah_name: String
-    ): SearchResponse
+    ): ListSurahResponse
 }

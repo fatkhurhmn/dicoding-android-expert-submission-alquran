@@ -44,7 +44,6 @@ class ListSurahActivity : AppCompatActivity() {
                 is Resource.Success -> {
                     with(binding) {
                         loadingListSurah.visibility = View.GONE
-                        loadingListSurah.visibility = View.GONE
                         rvSurah.visibility = View.VISIBLE
                     }
                     surahAdapter.submitList(surah.data)

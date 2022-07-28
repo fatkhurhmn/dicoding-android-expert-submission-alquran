@@ -11,10 +11,13 @@ class SurahInteractor @Inject constructor(private val surahRepository: SurahRepo
     SurahUseCase {
     override fun getAllSurah(): Flow<Resource<List<Surah>>> = surahRepository.getAllSurah()
 
-    override fun getFavoriteSurah(): Flow<List<Surah>> = surahRepository.getFavoriteSurah()
-
     override fun getDetailSurah(surahNumber: String): Flow<Resource<List<Verse>>> =
         surahRepository.getDetailSurah(surahNumber)
+
+    override fun getSurahByName(query: String): Flow<Resource<List<Surah>>> =
+        surahRepository.getSurahByName(query)
+
+    override fun getFavoriteSurah(): Flow<List<Surah>> = surahRepository.getFavoriteSurah()
 
     override fun setFavoriteSurah(surah: Surah, state: Boolean) =
         surahRepository.setFavoriteSurah(surah, state)

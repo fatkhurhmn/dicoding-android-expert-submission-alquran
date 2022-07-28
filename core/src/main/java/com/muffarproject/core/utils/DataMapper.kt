@@ -41,6 +41,18 @@ object DataMapper {
         return surahList
     }
 
+    fun mapSurahResponseToSurah(input: SurahResponse): Surah {
+        return Surah(
+            surahNumber = input.surahNumber,
+            name = input.name,
+            numberOfVerse = input.numberOfVerse,
+            meaning = input.meaning,
+            asma = input.asma,
+            type = input.type,
+            isFavorite = false
+        )
+    }
+
     fun mapSurahToSurahEntity(input: Surah) = SurahEntity(
         surahNumber = input.surahNumber,
         name = input.name,
