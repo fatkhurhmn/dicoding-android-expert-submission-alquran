@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tv_verse_item_number"
+        style="@style/Text.Content.Small"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/bg_circle"
+        android:gravity="center"
+        android:text="@string/dummy_surah_number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_verse_item_arabic"
+        style="@style/Text.Title.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/bg_verse"
+        android:lineSpacingMultiplier="1.4"
+        android:padding="10dp"
+        android:text="@string/dummy_verse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_verse_item_number"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_verse_item_latin"
+        style="@style/Text.Content.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/green_500"
+        android:lineSpacingMultiplier="1"
+        android:text="@string/dummy_verse_item_latin"
+        app:layout_constraintEnd_toEndOf="@id/tv_verse_item_arabic"
+        app:layout_constraintStart_toStartOf="@+id/tv_verse_item_arabic"
+        app:layout_constraintTop_toBottomOf="@id/tv_verse_item_arabic" />
+
+    <TextView
+        android:id="@+id/tv_verse_item_meaning"
+        style="@style/Text.Content.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:lineSpacingMultiplier="1"
+        android:text="@string/dummy_verse_item_meaning"
+        app:layout_constraintEnd_toEndOf="@id/tv_verse_item_arabic"
+        app:layout_constraintStart_toStartOf="@+id/tv_verse_item_arabic"
+        app:layout_constraintTop_toBottomOf="@id/tv_verse_item_latin" />
+</androidx.constraintlayout.widget.ConstraintLayout>

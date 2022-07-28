@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dummy_surah_name">Al-Fatihah</string>
+    <string name="dummy_surah_mean">Hari Dinampakkan Kesalahan-kesalahan</string>
+    <string name="dummy_surah_number">1</string>
+    <string name="dummy_surah_type">Madinah</string>
+    <string name="dummy_surah_verse">%s Ayat</string>
+    <string name="bullet">•</string>
+    <string name="dummy_surah_asma">الفاتحة</string>
+    <string name="dummy_verse">وَالَّذِينَ يُؤْمِنُونَ بِمَا أُنْزِلَ إِلَيْكَ وَمَا أُنْزِلَ مِنْ قَبْلِكَ وَبِالْآخِرَةِ هُمْ يُوقِنُونَ</string>
+    <string name="dummy_verse_item_latin">wa<strong>a</strong>lla<u>dz</u>iina yu/minuuna bim<u>aa</u> unzila ilayka wam<u>aa</u> unzila min qablika wabi<strong>a</strong>l-<u>aa</u>khirati hum yuuqinuun<strong>a</strong></string>
+    <string name="dummy_verse_item_meaning">dan mereka yang beriman kepada Kitab (Al Qur\'an) yang telah diturunkan kepadamu dan Kitab-kitab yang telah diturunkan sebelummu, serta mereka yakin akan adanya (kehidupan) akhirat.</string>
+</resources>

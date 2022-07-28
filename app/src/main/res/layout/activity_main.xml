@@ -26,15 +26,17 @@
         android:layout_marginBottom="32dp"
         android:fontFamily="@font/open_sans_bold"
         android:text="@string/al_quran"
-        android:textColor="@color/black"
+        android:textColor="@color/green_500"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="@+id/cardView"
-        app:layout_constraintStart_toStartOf="@+id/cardView2" />
+        app:layout_constraintBottom_toTopOf="@+id/cv_search_surah"
+        app:layout_constraintEnd_toEndOf="@+id/cv_search_surah"
+        app:layout_constraintStart_toStartOf="@+id/cv_read_quran" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+        android:id="@+id/cv_read_quran"
         style="@style/CardMenu"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical">
 
@@ -51,8 +53,10 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/cv_search_surah"
         style="@style/CardMenu"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical">
 
@@ -69,7 +73,10 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cv_favorite"
         style="@style/CardMenu"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal">
 
@@ -86,7 +93,10 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cv_settings"
         style="@style/CardMenu"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical"
         app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal">
 

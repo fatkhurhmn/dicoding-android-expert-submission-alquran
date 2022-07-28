@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#1B1B1B</item>
+    </style>
+
+    <style name="Text.Title">
+        <item name="android:fontFamily">@font/open_sans_bold</item>
+    </style>
+
+    <style name="Text.Title.Big">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="Text.Title.Medium">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Text.Title.Small">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Text.Content">
+        <item name="android:fontFamily">@font/open_sans_medium</item>
+    </style>
+
+    <style name="Text.Content.Big">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Text.Content.Medium">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Text.Content.Small">
+        <item name="android:textSize">12sp</item>
+    </style>
+</resources>
