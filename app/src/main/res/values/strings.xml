@@ -15,4 +15,7 @@
     <string name="keyword">Ketik kata kunci</string>
     <string name="empty_search">Tidak ada surat yang sesuai</string>
     <string name="add_favorite">Tambah ke Favorite</string>
+    <string name="title_favorite">favorite</string>
+    <string name="message_add_favorite">Surat ditambahkan ke daftar favorit</string>
+    <string name="message_remove_favorite">Surat dihapus dari daftar favorit</string>
 </resources>

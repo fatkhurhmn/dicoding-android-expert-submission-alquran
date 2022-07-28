@@ -1,6 +1,7 @@
 package com.muffarproject.alquran.main
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.apply {
             cvReadQuran.setOnClickListener(this@MainActivity)
             cvSearchSurah.setOnClickListener(this@MainActivity)
+            cvFavorite.setOnClickListener(this@MainActivity)
         }
     }
 
@@ -34,6 +36,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.cv_search_surah -> {
                 val searchIntent = Intent(this, SearchActivity::class.java)
                 startActivity(searchIntent)
+            }
+
+            R.id.cv_favorite -> {
+                val uri = Uri.parse("alquran://favorite")
+                val favoriteIntent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(favoriteIntent)
             }
         }
     }

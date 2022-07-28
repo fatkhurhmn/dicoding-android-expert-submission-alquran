@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.muffarproject.alquran.databinding.ActivityListSurahBinding
 import com.muffarproject.alquran.detail.DetailSurahActivity
+import com.muffarproject.alquran.detail.DetailSurahActivity.Companion.EXTRA_SURAH
 import com.muffarproject.core.data.Resource
 import com.muffarproject.core.domain.model.Surah
 import com.muffarproject.core.ui.SurahAdapter
@@ -80,6 +81,5 @@ class ListSurahActivity : AppCompatActivity() {
 
     companion object {
         const val TAG = "ListSurahActivity"
-        const val EXTRA_SURAH = "extra surah"
     }
 }

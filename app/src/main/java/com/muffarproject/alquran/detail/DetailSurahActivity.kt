@@ -8,12 +8,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.muffarproject.alquran.databinding.ActivityDetailSurahBinding
-import com.muffarproject.alquran.listsurah.ListSurahActivity
+import com.muffarproject.alquran.R
 import com.muffarproject.core.data.Resource
 import com.muffarproject.core.domain.model.Surah
 import com.muffarproject.core.ui.VerseAdapter
-import com.muffarproject.core.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,7 +29,7 @@ class DetailSurahActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener
         binding = ActivityDetailSurahBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val surah = intent.getParcelableExtra<Surah>(ListSurahActivity.EXTRA_SURAH)
+        val surah = intent.getParcelableExtra<Surah>(EXTRA_SURAH)
         binding.verseListToolbar.title = surah?.name
         isFavorite = surah?.isFavorite == true
 
@@ -56,7 +56,7 @@ class DetailSurahActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener
                 tvDetailSurahMeaning.text = surah.meaning
                 tvDetailType.text = surah.type.replaceFirstChar { it.uppercase() }
                 tvDetailNumberOfVerse.text = getString(
-                    R.string.dummy_surah_verse,
+                    com.muffarproject.core.R.string.dummy_surah_verse,
                     surah.numberOfVerse.toString()
                 )
                 setStatusFavorite(isFavorite)
@@ -66,13 +66,13 @@ class DetailSurahActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener
 
     private fun setStatusFavorite(favorite: Boolean) {
         val favoriteItem =
-            binding.verseListToolbar.menu.findItem(com.muffarproject.alquran.R.id.btn_add_favorite)
+            binding.verseListToolbar.menu.findItem(R.id.btn_add_favorite)
         if (favorite) {
             favoriteItem.icon =
-                getDrawable(com.muffarproject.alquran.R.drawable.ic_favorite_filled)
+                getDrawable(R.drawable.ic_favorite_filled)
         } else {
             favoriteItem.icon =
-                getDrawable(com.muffarproject.alquran.R.drawable.ic_favorite_border)
+                getDrawable(R.drawable.ic_favorite_border)
         }
     }
 
@@ -116,13 +116,19 @@ class DetailSurahActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
-        val surah = intent.getParcelableExtra<Surah>(ListSurahActivity.EXTRA_SURAH)
+        val surah = intent.getParcelableExtra<Surah>(EXTRA_SURAH)
         return when (item?.itemId) {
-            com.muffarproject.alquran.R.id.btn_add_favorite -> {
+            R.id.btn_add_favorite -> {
                 if (surah != null) {
                     isFavorite = !isFavorite
                     detailSurahViewModel.setFavorite(surah, isFavorite)
                     setStatusFavorite(isFavorite)
+
+                    if (isFavorite) {
+                        showMessage(getString(R.string.message_add_favorite))
+                    } else {
+                        showMessage(getString(R.string.message_remove_favorite))
+                    }
                 }
                 true
             }
@@ -130,7 +136,12 @@ class DetailSurahActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener
         }
     }
 
+    private fun showMessage(message: String) {
+        val snackbar = Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+        snackbar.show()
+    }
+
     companion object {
-        const val TAG = "DetailSurahActivity"
+        const val EXTRA_SURAH = "extra surah"
     }
 }

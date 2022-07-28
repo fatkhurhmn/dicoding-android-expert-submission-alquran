@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.muffarproject.alquran.R
 import com.muffarproject.alquran.databinding.ActivitySearchBinding
 import com.muffarproject.alquran.detail.DetailSurahActivity
+import com.muffarproject.alquran.detail.DetailSurahActivity.Companion.EXTRA_SURAH
 import com.muffarproject.core.data.Resource
 import com.muffarproject.core.domain.model.Surah
 import com.muffarproject.core.ui.SurahAdapter
@@ -113,9 +114,5 @@ class SearchActivity : AppCompatActivity() {
         val detailIntent = Intent(this, DetailSurahActivity::class.java)
         detailIntent.putExtra(EXTRA_SURAH, surah)
         startActivity(detailIntent)
-    }
-
-    companion object {
-        const val EXTRA_SURAH = "extra surah"
     }
 }

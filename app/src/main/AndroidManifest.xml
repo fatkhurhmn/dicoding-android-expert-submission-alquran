@@ -21,7 +21,15 @@
             android:exported="false" />
         <activity
             android:name=".detail.DetailSurahActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="detail"
+                    android:scheme="alquran" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".listsurah.ListSurahActivity"
             android:exported="false" />
