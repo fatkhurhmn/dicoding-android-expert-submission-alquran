@@ -2,6 +2,7 @@ package com.muffarproject.alquran.listsurah
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -48,6 +49,7 @@ class ListSurahActivity : AppCompatActivity() {
                     }
                     surahAdapter.submitList(surah.data)
                     setupRecyclerView()
+                    Log.d(TAG, "setupData: ${surah.data?.get(1)}")
                 }
                 is Resource.Error -> {
                     with(binding) {

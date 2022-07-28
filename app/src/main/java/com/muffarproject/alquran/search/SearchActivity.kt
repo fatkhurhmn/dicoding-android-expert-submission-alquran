@@ -30,6 +30,9 @@ class SearchActivity : AppCompatActivity() {
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.searchToolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
         setupData()
         setupSearchView()
     }

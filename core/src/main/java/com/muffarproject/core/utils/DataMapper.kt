@@ -34,7 +34,7 @@ object DataMapper {
                 meaning = it.meaning,
                 asma = it.asma,
                 type = it.type,
-                isFavorite = false
+                isFavorite = it.isFavorite
             )
             surahList.add(surahEntity)
         }

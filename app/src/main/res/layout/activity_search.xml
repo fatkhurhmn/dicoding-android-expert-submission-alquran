@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/tv_instruction"
-        style="@style/Text.Content.Small"
+        style="@style/Text.Content.Medium"
         android:layout_width="0dp"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="16dp"

@@ -1,10 +1,12 @@
 package com.muffarproject.alquran.detail
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.muffarproject.alquran.databinding.ActivityDetailSurahBinding
 import com.muffarproject.alquran.listsurah.ListSurahActivity
@@ -15,11 +17,12 @@ import com.muffarproject.core.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DetailSurahActivity : AppCompatActivity() {
+class DetailSurahActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
 
     private lateinit var binding: ActivityDetailSurahBinding
     private val detailSurahViewModel: DetailSurahViewModel by viewModels()
     private val verseAdapter: VerseAdapter by lazy { VerseAdapter() }
+    private var isFavorite = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,12 +31,20 @@ class DetailSurahActivity : AppCompatActivity() {
 
         val surah = intent.getParcelableExtra<Surah>(ListSurahActivity.EXTRA_SURAH)
         binding.verseListToolbar.title = surah?.name
+        isFavorite = surah?.isFavorite == true
 
-
+        setupToolbar()
         setupListVerse(surah)
         setupDetailSurah(surah)
-        binding.verseListToolbar.setNavigationOnClickListener {
-            onBackPressed()
+
+    }
+
+    private fun setupToolbar() {
+        with(binding) {
+            verseListToolbar.setNavigationOnClickListener {
+                onBackPressed()
+            }
+            verseListToolbar.setOnMenuItemClickListener(this@DetailSurahActivity)
         }
     }
 
@@ -48,7 +59,20 @@ class DetailSurahActivity : AppCompatActivity() {
                     R.string.dummy_surah_verse,
                     surah.numberOfVerse.toString()
                 )
+                setStatusFavorite(isFavorite)
             }
+        }
+    }
+
+    private fun setStatusFavorite(favorite: Boolean) {
+        val favoriteItem =
+            binding.verseListToolbar.menu.findItem(com.muffarproject.alquran.R.id.btn_add_favorite)
+        if (favorite) {
+            favoriteItem.icon =
+                getDrawable(com.muffarproject.alquran.R.drawable.ic_favorite_filled)
+        } else {
+            favoriteItem.icon =
+                getDrawable(com.muffarproject.alquran.R.drawable.ic_favorite_border)
         }
     }
 
@@ -88,6 +112,21 @@ class DetailSurahActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@DetailSurahActivity)
             setHasFixedSize(true)
             adapter = verseAdapter
+        }
+    }
+
+    override fun onMenuItemClick(item: MenuItem?): Boolean {
+        val surah = intent.getParcelableExtra<Surah>(ListSurahActivity.EXTRA_SURAH)
+        return when (item?.itemId) {
+            com.muffarproject.alquran.R.id.btn_add_favorite -> {
+                if (surah != null) {
+                    isFavorite = !isFavorite
+                    detailSurahViewModel.setFavorite(surah, isFavorite)
+                    setStatusFavorite(isFavorite)
+                }
+                true
+            }
+            else -> false
         }
     }
 
