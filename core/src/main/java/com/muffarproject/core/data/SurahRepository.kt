@@ -62,25 +62,25 @@ class SurahRepository @Inject constructor(
         }
     }
 
-    override fun getSurahByName(query: String): Flow<Resource<List<Surah>>> {
-        return flow {
-            emit(Resource.Loading())
-            when (val apiResponse = remoteDataSource.getSurahByName(query).first()) {
-                is ApiResponse.Success -> {
-                    val data = apiResponse.data.map {
-                        DataMapper.mapSurahResponseToSurah(it)
-                    }
-                    emit(Resource.Success(data))
-                }
-                is ApiResponse.Empty -> {
-                    emit(Resource.Success(listOf()))
-                }
-                is ApiResponse.Error -> {
-                    emit(Resource.Error(apiResponse.errorMessage))
+    override fun getSurahByName(query: String): Flow<Resource<List<Surah>>> =
+        object : NetworkBoundResource<List<Surah>, List<SurahResponse>>() {
+            override fun loadFromDB(): Flow<List<Surah>> {
+                return localDataSource.getSurahByName("%$query%").map {
+                    DataMapper.mapSurahEntitiesToSurah(it)
                 }
             }
-        }
-    }
+
+            override fun shouldFetch(data: List<Surah>?): Boolean =
+                data == null || data.isEmpty()
+
+            override suspend fun createCall(): Flow<ApiResponse<List<SurahResponse>>> =
+                remoteDataSource.getSurahByName(query)
+
+            override suspend fun saveCallResult(data: List<SurahResponse>) {
+                val surahList = DataMapper.mapSurahResponsesToSurahEntities(data)
+                localDataSource.insertSurah(surahList)
+            }
+        }.asFlow()
 
     override fun getFavoriteSurah(): Flow<List<Surah>> {
         return localDataSource.getFavoriteSurah().map {

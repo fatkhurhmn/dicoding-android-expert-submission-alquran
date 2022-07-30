@@ -10,6 +10,8 @@ import javax.inject.Singleton
 class LocalDataSource @Inject constructor(private val surahDao: SurahDao) {
     fun getAllSurah(): Flow<List<SurahEntity>> = surahDao.getAllSurah()
 
+    fun getSurahByName(query: String): Flow<List<SurahEntity>> = surahDao.getSurahByName(query)
+
     fun getFavoriteSurah(): Flow<List<SurahEntity>> = surahDao.getFavoriteSurah()
 
     suspend fun insertSurah(surah: List<SurahEntity>) = surahDao.insertSurah(surah)
