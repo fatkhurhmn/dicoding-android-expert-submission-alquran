@@ -15,7 +15,7 @@ class SurahAdapter(private val onVerseClick: (Surah) -> Unit) :
     inner class ListViewHolder(private val binding: SurahItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(surah: Surah) {
-            with(binding) {
+            binding.apply {
                 tvSurahItemNumber.text = surah.surahNumber
                 tvSurahItemName.text = surah.name
                 tvSurahItemType.text = surah.type.replaceFirstChar { it.uppercase() }

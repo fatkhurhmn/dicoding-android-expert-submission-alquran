@@ -16,7 +16,7 @@ class LocalDataSource @Inject constructor(private val surahDao: SurahDao) {
 
     suspend fun insertSurah(surah: List<SurahEntity>) = surahDao.insertSurah(surah)
 
-    fun setFavoriteSurah(surah: SurahEntity, newState: Boolean) {
+    suspend fun setFavoriteSurah(surah: SurahEntity, newState: Boolean) {
         surah.isFavorite = newState
         surahDao.updateFavoriteSurah(surah)
     }

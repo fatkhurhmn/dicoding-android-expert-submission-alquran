@@ -10,5 +10,5 @@ interface SurahUseCase {
     fun getDetailSurah(surahNumber: String): Flow<Resource<List<Verse>>>
     fun getSurahByName(query: String): Flow<Resource<List<Surah>>>
     fun getFavoriteSurah(): Flow<List<Surah>>
-    fun setFavoriteSurah(surah: Surah, state: Boolean)
+    suspend fun setFavoriteSurah(surah: Surah, state: Boolean)
 }

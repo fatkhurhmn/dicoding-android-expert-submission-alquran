@@ -7,7 +7,6 @@ import com.muffarproject.core.data.source.remote.response.SurahResponse
 import com.muffarproject.core.domain.model.Surah
 import com.muffarproject.core.domain.model.Verse
 import com.muffarproject.core.domain.repository.ISurahRepository
-import com.muffarproject.core.utils.AppExecutors
 import com.muffarproject.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -19,8 +18,7 @@ import javax.inject.Singleton
 @Singleton
 class SurahRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
-    private val localDataSource: LocalDataSource,
-    private val appExecutors: AppExecutors
+    private val localDataSource: LocalDataSource
 ) : ISurahRepository {
     override fun getAllSurah(): Flow<Resource<List<Surah>>> =
         object : NetworkBoundResource<List<Surah>, List<SurahResponse>>() {
@@ -88,8 +86,8 @@ class SurahRepository @Inject constructor(
         }
     }
 
-    override fun setFavoriteSurah(surah: Surah, state: Boolean) {
+    override suspend fun setFavoriteSurah(surah: Surah, state: Boolean) {
         val surahEntity = DataMapper.mapSurahToSurahEntity(surah)
-        appExecutors.diskIO().execute { localDataSource.setFavoriteSurah(surahEntity, state) }
+        localDataSource.setFavoriteSurah(surahEntity, state)
     }
 }
