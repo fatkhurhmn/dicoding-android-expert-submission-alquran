@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -69,10 +70,10 @@ class DetailSurahActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener
             binding.verseListToolbar.menu.findItem(R.id.btn_add_favorite)
         if (favorite) {
             favoriteItem.icon =
-                getDrawable(R.drawable.ic_favorite_filled)
+                AppCompatResources.getDrawable(applicationContext, R.drawable.ic_favorite_filled)
         } else {
             favoriteItem.icon =
-                getDrawable(R.drawable.ic_favorite_border)
+                AppCompatResources.getDrawable(applicationContext, R.drawable.ic_favorite_border)
         }
     }
 

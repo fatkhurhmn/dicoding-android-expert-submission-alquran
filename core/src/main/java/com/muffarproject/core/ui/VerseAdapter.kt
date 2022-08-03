@@ -1,8 +1,8 @@
 package com.muffarproject.core.ui
 
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +17,7 @@ class VerseAdapter : ListAdapter<Verse, VerseAdapter.ListViewHolder>(DIFF_CALLBA
             with(binding) {
                 tvVerseItemNumber.text = verse.number
                 tvVerseItemArabic.text = verse.arabic
-                tvVerseItemLatin.text = Html.fromHtml(verse.latin, Html.FROM_HTML_MODE_COMPACT)
+                tvVerseItemLatin.text = HtmlCompat.fromHtml(verse.latin, HtmlCompat.FROM_HTML_MODE_LEGACY)
                 tvVerseItemMeaning.text = verse.meaning
             }
         }
